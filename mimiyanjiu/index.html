@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>秘密研究所天天向上好好学习-天天向上好好学习研究所_秘密研究所学习笔记</title>
+<meta name="description" content="秘密研究所天天向上好好学习是一个以沉浸式自习与主题学习笔记为核心的学习空间，提供每日学习路线、共学节奏、笔记方法与学习社区入口，帮助访问者把天天向上的学习计划落到每一天。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231b2a4a'/%3E%3Ccircle cx='32' cy='26' r='11' fill='none' stroke='%23f2c14e' stroke-width='3'/%3E%3Cpath d='M32 15v-5M32 37v5M21 26h-5M43 26h5' stroke='%23f2c14e' stroke-width='3' stroke-linecap='round'/%3E%3Cpath d='M17 50c4-8 26-8 30 0' fill='none' stroke='%236fd3c4' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+:root{
+  --navy:#132238;
+  --navy-2:#1b2a4a;
+  --ink:#22303f;
+  --muted:#5d6b7c;
+  --paper:#f7f4ec;
+  --paper-2:#fffdf8;
+  --gold:#f2c14e;
+  --teal:#3f9d8f;
+  --line:#e2dccd;
+  --radius:16px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,sans-serif;
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.75;
+  font-size:16px;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+img,svg{display:block;max-width:100%}
+.wrap{width:min(1120px,92vw);margin:0 auto}
+
+/* 页头 */
+header.site{
+  position:sticky;top:0;z-index:50;
+  background:rgba(19,34,56,.96);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid rgba(242,193,78,.25);
+}
+.header-inner{display:flex;align-items:center;gap:24px;justify-content:space-between;padding:14px 0}
+.logo{display:flex;align-items:center;gap:10px;color:#fff;font-weight:700;font-size:17px;letter-spacing:.5px}
+.logo .mark{width:34px;height:34px;flex:0 0 34px}
+nav.main{display:flex;gap:6px;flex-wrap:wrap}
+nav.main a{
+  color:#cfd8e6;font-size:14px;padding:7px 12px;border-radius:999px;
+  transition:background .2s,color .2s;
+}
+nav.main a:hover{background:rgba(242,193,78,.16);color:var(--gold)}
+.header-cta{
+  background:var(--gold);color:#1a2233;font-weight:700;font-size:14px;
+  padding:9px 18px;border-radius:999px;white-space:nowrap;
+  transition:transform .2s,box-shadow .2s;
+}
+.header-cta:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(242,193,78,.35)}
+
+/* 首屏 */
+.hero{
+  background:
+    radial-gradient(900px 420px at 88% -10%,rgba(111,211,196,.18),transparent 60%),
+    radial-gradient(700px 380px at 6% 0%,rgba(242,193,78,.16),transparent 65%),
+    linear-gradient(180deg,#132238 0%,#1b2a4a 100%);
+  color:#fff;
+  padding:64px 0 72px;
+  position:relative;
+  overflow:hidden;
+}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+.hero .kicker{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:13px;letter-spacing:2px;color:var(--gold);
+  border:1px solid rgba(242,193,78,.45);border-radius:999px;
+  padding:5px 14px;margin-bottom:22px;
+}
+h1{
+  font-size:clamp(26px,3.6vw,40px);
+  line-height:1.35;font-weight:800;letter-spacing:1px;
+  margin-bottom:18px;
+}
+.hero p.lead{color:#c8d3e2;font-size:16.5px;max-width:36em;margin-bottom:28px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.btn-primary{
+  background:var(--gold);color:#1a2233;font-weight:700;
+  padding:12px 26px;border-radius:999px;font-size:15px;
+  transition:transform .2s,box-shadow .2s;
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(242,193,78,.35)}
+.btn-ghost{
+  border:1px solid rgba(255,255,255,.35);color:#e8eef7;
+  padding:12px 24px;border-radius:999px;font-size:15px;
+  transition:border-color .2s,background .2s;
+}
+.btn-ghost:hover{border-color:var(--gold);background:rgba(242,193,78,.1)}
+.hero-stats{display:flex;gap:34px;margin-top:38px;flex-wrap:wrap}
+.hero-stats div strong{display:block;font-size:24px;color:var(--gold);font-weight:800}
+.hero-stats div span{font-size:13px;color:#a9b7c9;letter-spacing:.5px}
+.hero-art{position:relative}
+.hero-art svg{width:100%;height:auto;filter:drop-shadow(0 20px 40px rgba(0,0,0,.35))}
+.hero-note{
+  position:absolute;left:-8px;bottom:6px;
+  background:var(--paper-2);color:var(--ink);
+  border-radius:14px;padding:12px 16px;font-size:13px;
+  box-shadow:0 12px 30px rgba(0,0,0,.28);
+  border-left:4px solid var(--teal);
+  max-width:230px;line-height:1.6;
+}
+
+/* 通用区块 */
+section.block{padding:64px 0}
+section.block.alt{background:var(--paper-2)}
+.sec-head{max-width:44em;margin-bottom:36px}
+.sec-head .tag{
+  display:inline-block;font-size:12.5px;letter-spacing:2px;color:var(--teal);
+  font-weight:700;margin-bottom:10px;
+}
+h2{font-size:clamp(21px,2.4vw,27px);font-weight:800;color:var(--navy);margin-bottom:12px;letter-spacing:.5px}
+.sec-head p{color:var(--muted);font-size:15.5px}
+
+/* 学习路线 */
+.route-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.route-card{
+  background:var(--paper-2);border:1px solid var(--line);border-radius:var(--radius);
+  padding:26px 24px;display:flex;flex-direction:column;gap:12px;
+  transition:transform .22s,box-shadow .22s,border-color .22s;
+}
+.route-card:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(19,34,56,.1);border-color:#d6cba9}
+.route-card .num{
+  width:38px;height:38px;border-radius:11px;display:grid;place-items:center;
+  background:rgba(63,157,143,.12);color:var(--teal);font-weight:800;font-size:15px;
+}
+.route-card h3{font-size:17.5px;color:var(--navy);font-weight:700}
+.route-card p{font-size:14.5px;color:var(--muted);flex:1}
+.route-card .meta{font-size:12.5px;color:#8a7f63;letter-spacing:.5px;border-top:1px dashed var(--line);padding-top:10px}
+
+/* 共学节奏 */
+.rhythm{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:start}
+.rhythm-list{display:flex;flex-direction:column;gap:0;border-left:3px solid #e6dfcd}
+.rhythm-item{position:relative;padding:0 0 26px 26px}
+.rhythm-item::before{
+  content:"";position:absolute;left:-9px;top:6px;width:15px;height:15px;
+  border-radius:50%;background:var(--paper-2);border:3px solid var(--teal);
+}
+.rhythm-item:last-child{padding-bottom:0}
+.rhythm-item time{font-size:12.5px;color:var(--teal);font-weight:700;letter-spacing:1px}
+.rhythm-item h4{font-size:16px;color:var(--navy);margin:4px 0 6px}
+.rhythm-item p{font-size:14.5px;color:var(--muted)}
+
+/* 笔记卡片 */
+.notes-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.note-card{
+  background:var(--paper-2);border:1px solid var(--line);border-radius:var(--radius);
+  padding:24px;transition:transform .22s,box-shadow .22s;
+}
+.note-card:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(19,34,56,.08)}
+.note-card .label{font-size:12px;letter-spacing:1.5px;color:var(--gold);font-weight:700;margin-bottom:8px}
+.note-card h3{font-size:17px;color:var(--navy);margin-bottom:8px}
+.note-card p{font-size:14.5px;color:var(--muted)}
+.note-card ul{margin-top:10px;padding-left:18px;font-size:14px;color:var(--muted)}
+.note-card li{margin-bottom:4px}
+
+/* 下载与入口 */
+.download-panel{
+  background:linear-gradient(135deg,#1b2a4a,#132238);
+  color:#fff;border-radius:22px;padding:44px;
+  display:grid;grid-template-columns:1fr auto;gap:36px;align-items:center;
+  position:relative;overflow:hidden;
+}
+.download-panel::after{
+  content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;
+  border-radius:50%;background:rgba(242,193,78,.14);
+}
+.download-panel h2{color:#fff;margin-bottom:10px}
+.download-panel p{color:#c3cfdf;font-size:15px;max-width:38em}
+.download-btn{
+  display:inline-flex;align-items:center;gap:9px;
+  background:var(--gold);color:#1a2233;font-weight:800;font-size:15px;
+  padding:14px 30px;border-radius:999px;
+  pointer-events:none;aria-disabled:true;
+}
+.download-meta{font-size:12.5px;color:#93a3b8;margin-top:10px;letter-spacing:.5px}
+
+/* 社区 */
+.community{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.comm-card{
+  border:1px solid var(--line);border-radius:var(--radius);padding:24px;
+  background:linear-gradient(180deg,#fffdf8,#f9f6ee);
+}
+.comm-card h3{font-size:16.5px;color:var(--navy);margin-bottom:8px}
+.comm-card p{font-size:14.5px;color:var(--muted)}
+.comm-card .stat{margin-top:14px;font-size:13px;color:var(--teal);font-weight:700}
+
+/* 页尾 */
+footer.site{
+  background:var(--navy);color:#a9b7c9;padding:48px 0 28px;margin-top:0;
+}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:36px;margin-bottom:34px}
+.footer-grid h4{color:#fff;font-size:15px;margin-bottom:14px;letter-spacing:.5px}
+.footer-grid p{font-size:13.5px;line-height:1.9}
+.footer-grid ul{list-style:none;display:flex;flex-direction:column;gap:8px;font-size:13.5px}
+.footer-grid ul a:hover{color:var(--gold)}
+.footer-brand{display:flex;align-items:center;gap:10px;color:#fff;font-weight:700;font-size:15px;margin-bottom:12px}
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,.12);padding-top:20px;
+  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  font-size:12.5px;color:#7f8ea3;
+}
+
+@media (max-width:960px){
+  .hero-grid,.rhythm,.download-panel{grid-template-columns:1fr}
+  .route-grid,.community{grid-template-columns:1fr 1fr}
+  .notes-grid{grid-template-columns:1fr}
+  .hero-art{order:-1;max-width:360px}
+  .download-panel{padding:32px}
+}
+@media (max-width:640px){
+  .header-inner{flex-wrap:wrap;gap:10px;padding:12px 0}
+  nav.main{order:3;width:100%;justify-content:flex-start;gap:2px}
+  nav.main a{padding:6px 9px;font-size:13px}
+  .header-cta{font-size:13px;padding:8px 14px}
+  .logo{font-size:15px}
+  .hero{padding:44px 0 52px}
+  .hero-stats{gap:22px}
+  .route-grid,.community{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  section.block{padding:48px 0}
+  .hero-note{position:static;margin-top:16px;max-width:none}
+}
+</style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap header-inner">
+    <a class="logo" href="#top" aria-label="回到顶部">
+      <svg class="mark" viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="14" fill="#1b2a4a"/>
+        <circle cx="32" cy="26" r="11" fill="none" stroke="#f2c14e" stroke-width="3"/>
+        <path d="M32 15v-5M32 37v5M21 26h-5M43 26h5" stroke="#f2c14e" stroke-width="3" stroke-linecap="round"/>
+        <path d="M17 50c4-8 26-8 30 0" fill="none" stroke="#6fd3c4" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+      <span>秘密研究所天天向上好好学习</span>
+    </a>
+    <nav class="main" aria-label="主导航">
+      <a href="#route">学习路线</a>
+      <a href="#rhythm">共学节奏</a>
+      <a href="#notes">笔记方法</a>
+      <a href="#download">学习资料</a>
+      <a href="#community">学习社区</a>
+    </nav>
+    <a class="header-cta" href="#route">开始今日学习</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- 首屏 -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="kicker">沉浸式自习 · 主题学习笔记</span>
+        <h1>秘密研究所天天向上好好学习</h1>
+        <p class="lead">秘密研究所天天向上好好学习是一处安静的自习与笔记空间：用一套可执行的每日学习路线，把“天天向上”拆成今天就能完成的小步，把“好好学习”落成一份可回查的笔记。</p>
+        <div class="hero-actions">
+          <a class="btn-primary" href="#route">查看今日学习路线</a>
+          <a class="btn-ghost" href="#notes">先看笔记方法</a>
+        </div>
+        <div class="hero-stats">
+          <div><strong>3 段</strong><span>每日学习节奏</span></div>
+          <div><strong>4 类</strong><span>主题笔记模板</span></div>
+          <div><strong>1 页</strong><span>当日复盘清单</span></div>
+        </div>
+      </div>
+      <div class="hero-art">
+        <svg viewBox="0 0 420 360" role="img" aria-label="书桌、台灯与笔记本的主题插画">
+          <defs>
+            <linearGradient id="deskg" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#2a3d61"/><stop offset="1" stop-color="#1a2740"/>
+            </linearGradient>
+          </defs>
+          <ellipse cx="210" cy="322" rx="170" ry="18" fill="rgba(0,0,0,.25)"/>
+          <rect x="46" y="248" width="328" height="18" rx="9" fill="url(#deskg)"/>
+          <rect x="70" y="266" width="14" height="56" rx="6" fill="#243553"/>
+          <rect x="336" y="266" width="14" height="56" rx="6" fill="#243553"/>
+          <!-- 台灯 -->
+          <path d="M120 248 L120 176" stroke="#f2c14e" stroke-width="6" stroke-linecap="round"/>
+          <path d="M120 176 L96 140 L150 132 Z" fill="#f2c14e"/>
+          <circle cx="122" cy="160" r="34" fill="rgba(242,193,78,.16)"/>
+          <!-- 笔记本 -->
+          <rect x="160" y="196" width="150" height="52" rx="8" fill="#fdfaf2"/>
+          <rect x="160" y="196" width="12" height="52" rx="6" fill="#3f9d8f"/>
+          <path d="M186 214h104M186 228h84" stroke="#c9c0a8" stroke-width="4" stroke-linecap="round"/>
+          <!-- 铅笔 -->
+          <rect x="292" y="236" width="64" height="9" rx="4" fill="#f2c14e" transform="rotate(-16 292 236)"/>
+          <path d="M352 226l14-2-8 12z" fill="#e8e2d3" transform="rotate(-16 352 226)"/>
+          <!-- 书架 -->
+          <rect x="236" y="120" width="112" height="10" rx="5" fill="#3f9d8f"/>
+          <rect x="246" y="82" width="14" height="38" rx="3" fill="#f2c14e"/>
+          <rect x="266" y="90" width="14" height="30" rx="3" fill="#e8e2d3"/>
+          <rect x="286" y="76" width="14" height="44" rx="3" fill="#6fd3c4"/>
+          <rect x="306" y="88" width="14" height="32" rx="3" fill="#d9cfb6"/>
+          <!-- 星星 -->
+          <path d="M74 96l4 9 10 1-7 7 2 10-9-5-9 5 2-10-7-7 10-1z" fill="#f2c14e" opacity=".85"/>
+          <path d="M348 62l3 7 8 1-6 5 2 8-7-4-7 4 2-8-6-5 8-1z" fill="#6fd3c4" opacity=".8"/>
+          <circle cx="196" cy="76" r="4" fill="#f2c14e" opacity=".7"/>
+        </svg>
+        <div class="hero-note">今日目标：先完成 25 分钟专注，再写下三行学习笔记。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 学习路线 -->
+  <section class="block" id="route">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="tag">DAILY ROUTE</span>
+        <h2>今日学习路线：三段式推进</h2>
+        <p>路线按“预热—专注—回收”三段展开，每段只承担一件事，避免一次塞进太多内容。秘密研究所天天向上好好学习的路线不追求时长，而是让每一次坐下都有明确终点。</p>
+      </div>
+      <div class="route-grid">
+        <article class="route-card">
+          <div class="num">01</div>
+          <h3>预热：5 分钟唤醒</h3>
+          <p>先把昨天留下的疑问读一遍，再写下今天最想弄懂的一个小问题。问题越具体，专注段越容易进入状态。</p>
+          <div class="meta">建议时长 5 分钟 · 无需工具</div>
+        </article>
+        <article class="route-card">
+          <div class="num">02</div>
+          <h3>专注：25 分钟单点</h3>
+          <p>只处理预热时提出的那个问题，中途不做整理、不换主题。遇到卡点先记在页边，专注结束后再统一处理。</p>
+          <div class="meta">建议时长 25 分钟 · 一次一个主题</div>
+        </article>
+        <article class="route-card">
+          <div class="num">03</div>
+          <h3>回收：3 行复盘</h3>
+          <p>写下“学会了什么、还卡在哪里、明天从哪继续”三行。三行足够形成连续性，也让第二天的预热有事可做。</p>
+          <div class="meta">建议时长 5 分钟 · 固定模板</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 共学节奏 -->
+  <section class="block alt" id="rhythm">
+    <div class="wrap rhythm">
+      <div class="sec-head" style="margin-bottom:0">
+        <span class="tag">RHYTHM</span>
+        <h2>共学节奏：把天天向上变成固定时段</h2>
+        <p>秘密研究所天天向上好好学习把一天分成三个共学时段，时段本身不强制，但一旦选定就尽量固定。固定时段比增加时长更容易形成习惯，也方便同伴之间互相约定。</p>
+      </div>
+      <div class="rhythm-list">
+        <div class="rhythm-item">
+          <time>07:30 — 08:00</time>
+          <h4>晨间轻读</h4>
+          <p>读一段材料、整理昨天未解决的三个疑问，为白天留出思考的引子。晨间段不安排高强度输出。</p>
+        </div>
+        <div class="rhythm-item">
+          <time>20:00 — 21:00</time>
+          <h4>主专注段</h4>
+          <p>一天中信息最完整的时段，适合处理需要连续推理的内容。用两个 25 分钟单点，中间休息 5 分钟。</p>
+        </div>
+        <div class="rhythm-item">
+          <time>21:00 — 21:15</time>
+          <h4>复盘与归档</h4>
+          <p>把当日笔记补上标题与标签，写清“下次从哪里开始”。归档做得好，第二天就不必重新找线索。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 笔记方法 -->
+  <section class="block" id="notes">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="tag">NOTES</span>
+        <h2>笔记方法：四类模板各管一件事</h2>
+        <p>笔记不是抄写，而是把理解过程留下痕迹。秘密研究所天天向上好好学习常用四类模板，按内容性质选择，不要求一篇笔记同时承担全部功能。</p>
+      </div>
+      <div class="notes-grid">
+        <article class="note-card">
+          <div class="label">模板一 · 概念卡</div>
+          <h3>一个概念一张卡</h3>
+          <p>写清定义、使用场景和一个反例。反例比正例更能暴露理解边界。</p>
+          <ul>
+            <li>定义用一句话，不超过两行</li>
+            <li>附一个自己想到的例子</li>
+            <li>标注来源章节，方便回查</li>
+          </ul>
+        </article>
+        <article class="note-card">
+          <div class="label">模板二 · 问题卡</div>
+          <h3>把卡点写成可回答的问题</h3>
+          <p>把“没看懂”改写成具体问句，例如“这一步为什么可以省略”。问题越具体，越容易被回答。</p>
+          <ul>
+            <li>一问一卡，不合并多个疑问</li>
+            <li>记录当时的思路，而非只记结论</li>
+            <li>解决后补上答案与日期</li>
+          </ul>
+        </article>
+        <article class="note-card">
+          <div class="label">模板三 · 结构卡</div>
+          <h3>用层级还原整体框架</h3>
+          <p>适合章节较多的材料。先用三级标题搭骨架，再往每层填两三个关键词。</p>
+          <ul>
+            <li>先骨架后细节，不边读边铺满</li>
+            <li>层级不超过三层，避免过深</li>
+            <li>合上材料后凭记忆补写一次</li>
+          </ul>
+        </article>
+        <article class="note-card">
+          <div class="label">模板四 · 复盘卡</div>
+          <h3>一天一页，写清下一步</h3>
+          <p>复盘卡只回答三件事：今天推进了什么、哪里卡住、明天第一件事做什么。</p>
+          <ul>
+            <li>控制在半页以内</li>
+            <li>结尾必须有一句明确的下一步</li>
+            <li>按周回看，找出重复卡点</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 下载 -->
+  <section class="block alt" id="download">
+    <div class="wrap">
+      <div class="download-panel">
+        <div>
+          <h2>学习资料：四类笔记模板合集</h2>
+          <p>把概念卡、问题卡、结构卡与复盘卡整理成一套可打印的空白页，配合上文的三段式路线使用。秘密研究所天天向上好好学习建议先手写一两周，再决定是否调整版式。</p>
+          <div class="download-meta">格式：打印版空白页 · 适合 A4 单面</div>
+        </div>
+        <div>
+          <a class="download-btn" href="#" data-download-placeholder="true" aria-disabled="true" tabindex="-1">
+            <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
+              <path d="M8 2v8M4.5 7L8 10.5 11.5 7M3 13h10" stroke="#1a2233" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            下载
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 社区 -->
+  <section class="block" id="community">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="tag">COMMUNITY</span>
+        <h2>学习社区：同伴让节奏更稳</h2>
+        <p>独自学习容易在第二个 25 分钟掉队。秘密研究所天天向上好好学习按学习方向组织小组，成员之间交换问题卡与复盘卡，用具体内容代替寒暄。</p>
+      </div>
+      <div class="community">
+        <article class="comm-card">
+          <h3>问题卡互换</h3>
+          <p>每周挑一张自己没解决的问题卡，与同伴交换阅读，尝试从对方的思路里找到切入角度。</p>
+          <div class="stat">每周一次 · 一对一</div>
+        </article>
+        <article class="comm-card">
+          <h3>复盘共读</h3>
+          <p>月末集中回看复盘卡，找出反复出现的卡点类型，再决定下个月的学习路线要不要调整。</p>
+          <div class="stat">每月一次 · 小组共读</div>
+        </article>
+        <article class="comm-card">
+          <h3>主题自习时段</h3>
+          <p>按同一主题约好固定时段一起自习，结束后各自留一句当日进展，保持连续性。</p>
+          <div class="stat">按主题约定 · 自主报名</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <svg width="26" height="26" viewBox="0 0 64 64" aria-hidden="true">
+            <rect width="64" height="64" rx="14" fill="#1b2a4a"/>
+            <circle cx="32" cy="26" r="11" fill="none" stroke="#f2c14e" stroke-width="3"/>
+            <path d="M32 15v-5M32 37v5M21 26h-5M43 26h5" stroke="#f2c14e" stroke-width="3" stroke-linecap="round"/>
+            <path d="M17 50c4-8 26-8 30 0" fill="none" stroke="#6fd3c4" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+          秘密研究所天天向上好好学习
+        </div>
+        <p>一处安静的自习与笔记空间。用三段式路线、四类笔记模板与固定共学时段，把天天向上的计划落到每一天的具体动作上。</p>
+      </div>
+      <div>
+        <h4>页面导航</h4>
+        <ul>
+          <li><a href="#route">今日学习路线</a></li>
+          <li><a href="#rhythm">共学节奏</a></li>
+          <li><a href="#notes">笔记方法</a></li>
+          <li><a href="#download">学习资料下载</a></li>
+          <li><a href="#community">学习社区</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>学习提示</h4>
+        <ul>
+          <li>先固定时段，再增加时长</li>
+          <li>一次专注只处理一个问题</li>
+          <li>复盘卡必须写下下一步</li>
+          <li>问题卡解决后补日期</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>秘密研究所天天向上好好学习 · 沉浸式自习与主题学习笔记</span>
+      <span>内容随学习进度持续更新</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+        </html>
