@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日大赛-每日大赛热点聚合_大赛吃瓜爆料热门看点</title>
+<meta name="description" content="每日大赛聚合当天最受关注的网络热点与吃瓜爆料内容，按热度与时间呈现热门看点，提供当日榜单、看点速览与话题梳理，方便快速浏览每日大赛的讨论焦点。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23e5484d'/%3E%3Cpath d='M20 44V20h6l6 12 6-12h6v24h-6V31l-6 11-6-11v13z' fill='%23fff'/%3E%3C/svg%3E">
+<style>
+:root{
+  --ink:#1b1c20;
+  --ink-soft:#4a4d57;
+  --line:#e6e3dd;
+  --paper:#faf8f4;
+  --card:#ffffff;
+  --accent:#e5484d;
+  --accent-deep:#b32b30;
+  --gold:#c99a3c;
+  --radius:16px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,-apple-system,sans-serif;
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.75;
+  font-size:16px;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+img,svg{display:block}
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+
+/* 页头 */
+.site-head{
+  position:sticky;top:0;z-index:50;
+  background:rgba(250,248,244,.92);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.head-inner{display:flex;align-items:center;gap:26px;min-height:66px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px;letter-spacing:.5px;color:var(--ink);flex:none}
+.brand-mark{width:34px;height:34px;border-radius:10px;background:var(--accent);display:grid;place-items:center;flex:none}
+.brand-mark svg{width:20px;height:20px}
+.nav{display:flex;gap:4px;flex-wrap:wrap;margin-left:auto}
+.nav a{
+  font-size:14.5px;color:var(--ink-soft);padding:8px 12px;border-radius:9px;
+  transition:.2s;
+}
+.nav a:hover{background:#f0ece5;color:var(--ink)}
+.nav a.hot{color:var(--accent-deep);font-weight:600}
+
+/* 首屏 */
+.hero{padding:54px 0 40px;position:relative;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:44px;align-items:center}
+.kicker{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:13px;font-weight:700;color:var(--accent-deep);
+  background:#fdecec;border:1px solid #f6cfd0;
+  padding:5px 13px;border-radius:99px;letter-spacing:.4px;
+}
+.kicker .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:pulse 1.8s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+h1{
+  font-size:clamp(34px,5.2vw,54px);
+  line-height:1.15;font-weight:900;letter-spacing:-.5px;
+  margin:18px 0 16px;
+}
+h1 em{font-style:normal;color:var(--accent)}
+.hero-lead{font-size:16.5px;color:var(--ink-soft);max-width:33em;margin-bottom:26px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:15px;font-weight:700;padding:12px 24px;border-radius:12px;
+  transition:.2s;border:1px solid transparent;
+}
+.btn-primary{background:var(--accent);color:#fff;box-shadow:0 8px 20px -8px rgba(229,72,77,.7)}
+.btn-primary:hover{background:var(--accent-deep)}
+.btn-ghost{background:#fff;border-color:var(--line);color:var(--ink)}
+.btn-ghost:hover{border-color:#d3cec5;background:#fdfbf7}
+.hero-meta{margin-top:22px;display:flex;flex-wrap:wrap;gap:20px;font-size:13.5px;color:#7a7d87}
+.hero-meta b{color:var(--ink);font-size:17px;display:block;line-height:1.3;font-weight:800}
+
+.hero-visual{
+  position:relative;border-radius:22px;background:#fff;border:1px solid var(--line);
+  padding:22px;box-shadow:0 24px 50px -30px rgba(27,28,32,.35);
+}
+.hv-head{display:flex;justify-content:space-between;align-items:center;font-size:12.5px;color:#8b8e97;margin-bottom:14px;letter-spacing:.5px}
+.live-tag{display:inline-flex;align-items:center;gap:6px;color:var(--accent);font-weight:700}
+.live-tag::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.hv-row{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px dashed var(--line)}
+.hv-row:last-child{border-bottom:0}
+.hv-rank{font-weight:900;font-size:14px;width:22px;color:#b9b3a8;flex:none;font-variant-numeric:tabular-nums}
+.hv-row:nth-child(2) .hv-rank{color:var(--accent)}
+.hv-row:nth-child(3) .hv-rank{color:var(--gold)}
+.hv-title{font-size:14px;font-weight:600;flex:1;line-height:1.45}
+.hv-bar{height:5px;border-radius:99px;background:#f0ece5;flex:none;width:70px;overflow:hidden}
+.hv-bar i{display:block;height:100%;background:linear-gradient(90deg,#f08a8d,var(--accent));border-radius:99px}
+
+/* 通用区块 */
+section{padding:52px 0}
+.sec-head{margin-bottom:28px}
+.sec-eyebrow{font-size:12.5px;font-weight:800;letter-spacing:2px;color:var(--accent);text-transform:uppercase;margin-bottom:8px}
+h2{font-size:clamp(22px,3vw,29px);font-weight:900;letter-spacing:-.2px;line-height:1.3}
+.sec-desc{color:var(--ink-soft);font-size:15px;margin-top:10px;max-width:44em}
+
+/* 今日看点 */
+.band{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px;display:flex;flex-direction:column;gap:10px;transition:.22s;
+}
+.card:hover{border-color:#d8d2c7;transform:translateY(-3px);box-shadow:0 16px 32px -24px rgba(27,28,32,.4)}
+.card-top{display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:700;letter-spacing:.6px}
+.tag{color:var(--accent-deep);background:#fdecec;padding:3px 10px;border-radius:99px}
+.tag.alt{color:#7a5a15;background:#faf0d9}
+.tag.cool{color:#2c5f8a;background:#e8f1f8}
+.card h3{font-size:17px;font-weight:800;line-height:1.45}
+.card p{font-size:14px;color:var(--ink-soft);line-height:1.7;flex:1}
+.card-foot{font-size:12.5px;color:#989ba3;display:flex;gap:12px;border-top:1px solid var(--line);padding-top:11px}
+
+/* 榜单 */
+.list-panel{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.list-head{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;border-bottom:1px solid var(--line);flex-wrap:wrap;gap:12px}
+.list-head h3{font-size:16px;font-weight:800}
+.filters{display:flex;gap:6px;flex-wrap:wrap}
+.filters button{
+  font-family:inherit;font-size:13px;font-weight:600;color:var(--ink-soft);
+  background:#f6f3ee;border:1px solid transparent;padding:6px 14px;border-radius:99px;cursor:pointer;transition:.2s;
+}
+.filters button:hover{background:#ece7df}
+.filters button.active{background:var(--ink);color:#fff}
+.b-list{list-style:none}
+.b-list li{display:flex;gap:16px;align-items:flex-start;padding:17px 24px;border-bottom:1px solid #f2eee7;transition:.2s}
+.b-list li:last-child{border-bottom:0}
+.b-list li:hover{background:#fdfbf7}
+.b-num{font-size:15px;font-weight:900;width:30px;flex:none;color:#c0b9ad;font-variant-numeric:tabular-nums;line-height:1.6}
+.b-list li:nth-child(1) .b-num{color:var(--accent)}
+.b-list li:nth-child(2) .b-num{color:var(--gold)}
+.b-list li:nth-child(3) .b-num{color:#8a7a5c}
+.b-main{flex:1;min-width:0}
+.b-main a{font-size:15.5px;font-weight:700;display:inline-block;line-height:1.5}
+.b-main a:hover{color:var(--accent-deep)}
+.b-main span{display:block;font-size:13.5px;color:#82858e;margin-top:3px;line-height:1.65}
+.b-heat{font-size:12.5px;color:#989ba3;flex:none;font-variant-numeric:tabular-nums;padding-top:3px}
+.empty-note{padding:26px 24px;font-size:14px;color:#82858e}
+
+/* 说明段落 */
+.prose-grid{display:grid;grid-template-columns:1fr 1fr;gap:38px;align-items:start}
+.prose h3{font-size:17.5px;font-weight:800;margin-bottom:10px}
+.prose p{font-size:15px;color:var(--ink-soft);margin-bottom:14px}
+.prose strong{color:var(--ink);font-weight:700}
+.pull{
+  border-left:3px solid var(--accent);padding:4px 0 4px 16px;
+  font-size:15px;color:var(--ink);font-weight:600;margin:20px 0;background:#fdf6f6;
+}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.chips a{font-size:13px;padding:6px 13px;border-radius:99px;background:#f2eee7;color:var(--ink-soft);transition:.2s}
+.chips a:hover{background:var(--ink);color:#fff}
+
+/* 订阅/入口 */
+.cta{
+  background:linear-gradient(135deg,#232428,#131417);color:#f4f1ec;
+  border-radius:24px;padding:40px;display:grid;grid-template-columns:1.4fr .6fr;gap:28px;align-items:center;
+}
+.cta h2{color:#fff}
+.cta p{color:#b7b4ae;font-size:15px;margin-top:10px;max-width:38em}
+.cta-side{display:flex;flex-direction:column;gap:10px}
+.cta-side .btn{justify-content:center}
+.btn-light{background:#fff;color:#1b1c20}
+.btn-light:hover{background:#efe9df}
+.btn-outline{border:1px solid #45464c;color:#e8e4dd;background:transparent}
+.btn-outline:hover{border-color:#8d8e94}
+
+/* 页尾 */
+.site-foot{border-top:1px solid var(--line);padding:34px 0 40px;margin-top:10px;background:#f5f2ec}
+.foot-inner{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:flex-start}
+.foot-brand{font-weight:800;font-size:16px;display:flex;align-items:center;gap:9px}
+.foot-brand .brand-mark{width:28px;height:28px;border-radius:8px}
+.foot-brand .brand-mark svg{width:16px;height:16px}
+.foot-text{font-size:13px;color:#85888f;margin-top:10px;max-width:34em;line-height:1.8}
+.foot-links{display:flex;gap:18px;flex-wrap:wrap;font-size:13px;color:#72757d}
+.foot-links a:hover{color:var(--accent-deep)}
+.copy{font-size:12.5px;color:#9a9da4;margin-top:24px;border-top:1px solid #e8e3da;padding-top:16px}
+
+/* 响应式 */
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:30px}
+  .hero-visual{order:2}
+  .card-grid{grid-template-columns:1fr 1fr}
+  .prose-grid{grid-template-columns:1fr;gap:26px}
+  .cta{grid-template-columns:1fr;padding:30px}
+}
+@media (max-width:640px){
+  body{font-size:15.5px}
+  .head-inner{flex-wrap:wrap;gap:10px;padding:10px 0}
+  .nav{margin-left:0;width:100%;gap:2px;overflow-x:auto;padding-bottom:2px}
+  .nav a{padding:7px 9px;font-size:13.5px;white-space:nowrap}
+  .hero{padding:34px 0 26px}
+  .card-grid{grid-template-columns:1fr}
+  section{padding:38px 0}
+  .b-list li{padding:14px 16px;gap:11px}
+  .list-head{padding:15px 16px}
+  .b-heat{display:none}
+  .b-main span{font-size:13px}
+  .cta{padding:26px 20px;border-radius:18px}
+  .foot-inner{flex-direction:column;gap:18px}
+}
+</style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<header class="site-head">
+  <div class="wrap head-inner">
+    <a class="brand" href="#top" aria-label="每日大赛首页">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 64 64" fill="none"><path d="M20 44V20h6l6 12 6-12h6v24h-6V31l-6 11-6-11v13z" fill="#fff"/></svg>
+      </span>
+      每日大赛
+    </a>
+    <nav class="nav" aria-label="主导航">
+      <a href="#today" class="hot">今日看点</a>
+      <a href="#board">热度榜单</a>
+      <a href="#explain">怎么看</a>
+      <a href="#topics">话题标签</a>
+      <a href="#follow">订阅</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- 首屏 -->
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="kicker"><span class="dot"></span>每日更新 · 当日热点聚合</span>
+        <h1>每日大赛</h1>
+        <p class="hero-lead">把一天里被反复讨论的热点、爆料与争议收拢到一处。每日大赛按热度与时间编排看点，先给结论，再给来龙去脉，方便你几分钟内看清当天在聊什么。</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#board">查看今日榜单</a>
+          <a class="btn btn-ghost" href="#today">浏览看点速览</a>
+        </div>
+        <div class="hero-meta">
+          <div><b>每日</b>更新节奏</div>
+          <div><b>3 类</b>内容分区</div>
+          <div><b>按热度</b>排序呈现</div>
+        </div>
+      </div>
+
+      <aside class="hero-visual" aria-label="今日热度速览">
+        <div class="hv-head">
+          <span>热度速览</span>
+          <span class="live-tag">今日更新</span>
+        </div>
+        <div class="hv-row">
+          <span class="hv-rank">01</span>
+          <span class="hv-title">某综艺现场片段引发讨论</span>
+          <span class="hv-bar"><i style="width:94%"></i></span>
+        </div>
+        <div class="hv-row">
+          <span class="hv-rank">02</span>
+          <span class="hv-title">品牌联名海报被指撞款</span>
+          <span class="hv-bar"><i style="width:81%"></i></span>
+        </div>
+        <div class="hv-row">
+          <span class="hv-rank">03</span>
+          <span class="hv-title">主播停播回应传闻</span>
+          <span class="hv-bar"><i style="width:67%"></i></span>
+        </div>
+        <div class="hv-row">
+          <span class="hv-rank">04</span>
+          <span class="hv-title">短剧台词截图流传开</span>
+          <span class="hv-bar"><i style="width:52%"></i></span>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- 今日看点 -->
+  <section id="today" class="band">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-eyebrow">Today's Focus</div>
+        <h2>今日看点速览</h2>
+        <p class="sec-desc">每张卡片对应一条正在被讨论的内容，标注所属领域与讨论阶段。点开后能看到事件梗概、时间线与各方的公开回应，避免只看到截取片段。</p>
+      </div>
+      <div class="card-grid">
+        <article class="card">
+          <div class="card-top"><span class="tag">文娱</span><span>讨论中</span></div>
+          <h3>综艺片段二次传播，原片与剪辑版并存</h3>
+          <p>同一段内容出现多个剪辑版本，讨论集中在上下文是否被省略。每日大赛把原片时间点与二创版本并列标注，说明差异出现在哪几句对话。</p>
+          <div class="card-foot"><span>今日 09:20 更新</span><span>3 条补充</span></div>
+        </article>
+        <article class="card">
+          <div class="card-top"><span class="tag alt">品牌</span><span>已回应</span></div>
+          <h3>联名海报相似度争议，双方先后发声明</h3>
+          <p>设计方与品牌方分别给出说明，核心分歧在于参考来源与发布时间。页面按时间顺序列出两份声明的原文要点，不做超出表述的结论。</p>
+          <div class="card-foot"><span>今日 11:05 更新</span><span>2 份声明</span></div>
+        </article>
+        <article class="card">
+          <div class="card-top"><span class="tag cool">直播</span><span>待补充</span></div>
+          <h3>主播停播说明，粉丝与路人解读不一</h3>
+          <p>当事人仅发布简短说明，未展开细节。每日大赛将该说明与后续动态分开陈列，标注哪些信息仍属传闻、哪些已由本人确认。</p>
+          <div class="card-foot"><span>今日 14:40 更新</span><span>1 条动态</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 热度榜单 -->
+  <section id="board">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-eyebrow">Hot Board</div>
+        <h2>每日大赛热度榜单</h2>
+        <p class="sec-desc">榜单按当天讨论量排序，同一事件只保留一个条目，后续进展并入原条目。切换分类可只看某一领域的看点。</p>
+      </div>
+
+      <div class="list-panel">
+        <div class="list-head">
+          <h3>今日条目</h3>
+          <div class="filters" role="group" aria-label="榜单筛选">
+            <button type="button" class="active" data-filter="all">全部</button>
+            <button type="button" data-filter="文娱">文娱</button>
+            <button type="button" data-filter="品牌">品牌</button>
+            <button type="button" data-filter="直播">直播</button>
+          </div>
+        </div>
+        <ul class="b-list" id="boardList">
+          <li data-cat="文娱">
+            <span class="b-num">01</span>
+            <div class="b-main">
+              <a href="#explain">综艺片段二次传播，原片与剪辑版并存</a>
+              <span>多个剪辑版本同时流传，讨论点在于上下文是否被省略。条目内已并列标注原片时间点。</span>
+            </div>
+            <span class="b-heat">热度 9420</span>
+          </li>
+          <li data-cat="品牌">
+            <span class="b-num">02</span>
+            <div class="b-main">
+              <a href="#explain">联名海报相似度争议，双方先后发声明</a>
+              <span>设计方与品牌方各发一份说明，分歧集中在参考来源与发布时间顺序。</span>
+            </div>
+            <span class="b-heat">热度 8130</span>
+          </li>
+          <li data-cat="直播">
+            <span class="b-num">03</span>
+            <div class="b-main">
+              <a href="#explain">主播停播说明，粉丝与路人解读不一</a>
+              <span>当事人仅发布简短说明，未展开细节，后续动态仍在跟进。</span>
+            </div>
+            <span class="b-heat">热度 6740</span>
+          </li>
+          <li data-cat="文娱">
+            <span class="b-num">04</span>
+            <div class="b-main">
+              <a href="#explain">短剧台词截图流传，剧组暂未回应</a>
+              <span>截图来源尚不明确，页面标注为未确认信息，等待片方说明。</span>
+            </div>
+            <span class="b-heat">热度 5210</span>
+          </li>
+          <li data-cat="品牌">
+            <span class="b-num">05</span>
+            <div class="b-main">
+              <a href="#explain">线下活动物料改动，主办方发布调整说明</a>
+              <span>物料调整原因已由主办方说明，讨论集中在改动幅度与预期差距。</span>
+            </div>
+            <span class="b-heat">热度 4380</span>
+          </li>
+          <li data-cat="直播">
+            <span class="b-num">06</span>
+            <div class="b-main">
+              <a href="#explain">连麦对话片段被单独截取传播</a>
+              <span>片段缺少前后语境，完整回放已同步标注时间戳便于对照。</span>
+            </div>
+            <span class="b-heat">热度 3960</span>
+          </li>
+        </ul>
+        <p class="empty-note" id="emptyNote" hidden>该分类今天暂无新条目，切换「全部」可查看完整榜单。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 怎么看 -->
+  <section id="explain" class="band">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-eyebrow">How to Read</div>
+        <h2>怎样读每日大赛</h2>
+        <p class="sec-desc">热点内容真假混杂，同样的词条下常常并存事实、推测与情绪表达。页面用固定的信息层次把它们分开，读起来更省力。</p>
+      </div>
+      <div class="prose-grid">
+        <div class="prose">
+          <h3>先看层次，再看结论</h3>
+          <p>每条看点都按「已确认 / 单方说法 / 未核实」三个层次标注。<strong>已确认</strong>指有公开原文或当事人直接表述可查；<strong>单方说法</strong>指只有一方回应，另一方尚未表态；<strong>未核实</strong>指截图、转述或匿名爆料，来源无法追溯。</p>
+          <p>这样处理的好处是，读者不必先接受某个立场，就能判断信息的可靠程度。每日大赛不替读者下判断，只把判断所需的材料摆出来。</p>
+          <div class="pull">同一个事实在榜单、卡片与展开页出现时，承担的任务不同：榜单给位置，卡片给梗概，展开页给时间线与原文位置。</div>
+        </div>
+        <div class="prose">
+          <h3>时间线优先于热度</h3>
+          <p>很多争议的根源是先后顺序被弄混。每日大赛为每条条目维护一条时间线，记录发布时间、回应时间与二次传播时间，热度数字只作参考，不作为事实依据。</p>
+          <p>如果后续出现新的公开回应，原条目会被更新而不是另开一条，这样同一件事的脉络始终连在一起。条目下方的「补充」数量，就是更新次数的直观标记。</p>
+          <h3 style="margin-top:18px">遇到无法确认的内容</h3>
+          <p>页面会保留该条目，但明确标注来源缺失。与其删除后让传言在别处继续流动，不如在原位说明「目前只有这一条信息，且无法验证」。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 话题标签 -->
+  <section id="topics">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-eyebrow">Topics</div>
+        <h2>常驻话题标签</h2>
+        <p class="sec-desc">标签用于聚合跨天的同类内容。同一个标签下的条目按时间倒序排列，方便回看一件事从出现到平息的全过程。</p>
+      </div>
+      <div class="chips">
+        <a href="#board">综艺片段</a>
+        <a href="#board">品牌联名</a>
+        <a href="#board">设计争议</a>
+        <a href="#board">直播回应</a>
+        <a href="#board">声明原文</a>
+        <a href="#board">时间线</a>
+        <a href="#board">二创剪辑</a>
+        <a href="#board">截图核实</a>
+        <a href="#board">线下活动</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 订阅入口 -->
+  <section id="follow" style="padding-top:0">
+    <div class="wrap">
+      <div class="cta">
+        <div>
+          <h2>每天花几分钟，看完当日脉络</h2>
+          <p>每日大赛在每天固定时段更新榜单与看点，条目随进展调整。你可以先浏览榜单定位感兴趣的事件，再进入展开页查看时间线与原文位置。</p>
+        </div>
+        <div class="cta-side">
+          <a class="btn btn-light" href="#board">进入今日榜单</a>
+          <a class="btn btn-outline" href="#" download data-download-placeholder="true" aria-disabled="true" tabindex="-1" style="pointer-events:none">下载</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-inner">
+      <div>
+        <div class="foot-brand">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 64 64" fill="none"><path d="M20 44V20h6l6 12 6-12h6v24h-6V31l-6 11-6-11v13z" fill="#fff"/></svg>
+          </span>
+          每日大赛
+        </div>
+        <p class="foot-text">每日大赛聚合当日被讨论的热点与爆料内容，按热度与时间编排看点，标注信息来源层次，帮助读者快速了解事件梗概与后续进展。页面内容随事件更新而调整。</p>
+      </div>
+      <nav class="foot-links" aria-label="页尾导航">
+        <a href="#today">今日看点</a>
+        <a href="#board">热度榜单</a>
+        <a href="#explain">怎么看</a>
+        <a href="#topics">话题标签</a>
+      </nav>
+    </div>
+    <p class="copy">© 每日大赛 · 内容以公开信息为基础，标注层次与来源，具体进展以当事人及官方表述为准。</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var btns = document.querySelectorAll('.filters button');
+  var items = document.querySelectorAll('#boardList li');
+  var note = document.getElementById('emptyNote');
+  btns.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      btns.forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      var f = btn.getAttribute('data-filter');
+      var shown = 0;
+      items.forEach(function(li){
+        var ok = (f === 'all') || (li.getAttribute('data-cat') === f);
+        li.style.display = ok ? '' : 'none';
+        if(ok) shown++;
+      });
+      note.hidden = shown !== 0;
+    });
+  });
+})();
+</script>
+</body>
+</html>
